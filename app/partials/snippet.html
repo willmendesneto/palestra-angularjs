@@ -1,0 +1,45 @@
+<h2>Total Snippet(s): {{ getTotalSnippets() }}</h2>
+
+<ul>
+  <li data-ng-repeat="item in snippets">
+    <input type="checkbox" class="show-snippet-info" data-ng-model="item.done" data-ng-click="editSnippet(item)"; />
+    <span class="done-{{ item.done }}">{{ item.text }}</span>
+  </li>
+</ul>
+
+<div class="btn-group">
+  <a href="#index" class="btn btn-inverse">Start over</a>
+  <a href="#form-snippet" data-toggle="modal" class="btn ">Add a snippet</a>
+  <a href="javascript:void(0);" class="btn btn-warning pretty-print" data-ng-click="compileTextWithSnippets(text);">Compile</a>
+</div><br/><br/>
+<textarea data-ng-model="text" class="texteditor left" ng-change="compileTextWithSnippets(text)"></textarea>
+<pre class="left prettyprint code-compiled linenums"></pre>
+
+
+<div class="modal hide" id="form-snippet">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3>Adding a snippet in editor</h3>
+  </div>
+  <div class="modal-body">
+    <div class="row-fluid">
+      <div class="span10 offset1">
+        <div id="modalTab">
+          <div class="tab-content">
+            <form method="post" name="form_snippet" id="form_snippet" action="#index" autocomplete = "off">
+              <label>Título:</label>
+              <input type="text" value="0" data-ng-model="snippet.text" data-ng-model-instant />
+              <label>Tag:</label>
+              <input type="text" value="0" data-ng-model="snippet.tag" data-ng-model-instant />
+              <label>Snippet:</label>
+              <textarea value="0" data-ng-model="snippet.snippet" data-ng-model-instant rows="10" cols="20"/></textarea><br/>
+
+              <input type="button" class="btn btn-primary" value="Save" data-ng-click="addSnippet();" />
+              <input type="button" class="btn btn-danger" value="Remove" data-ng-click="clearCompleted();" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
