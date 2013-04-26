@@ -10,12 +10,6 @@ var SnippetCtrl = function ($scope, $routeParams, SnippetService){
 	$scope.text = "<h1>Welcome!</h1>\n\n<lorem></lorem>";
 
 	/**
-	 * Variable for snippets editor with compilation
-	 * @type {String}
-	 */
-	$scope.compiledText = '';
-	
-	/**
 	 * Initial value of form snippets
 	 *
 	 * @type {Array}
@@ -83,13 +77,39 @@ var SnippetCtrl = function ($scope, $routeParams, SnippetService){
 	$scope.compileTextWithSnippets = function(text){
 		var textWithSnippets = text;
 		$($scope.snippets).each( function(i, data){
-			textWithSnippets = textWithSnippets.replace('<' + data.tag + '></' + data.tag + '>', data.snippet);
+			textWithSnippets = $scope.stringReplace( '<' + data.tag + '></' + data.tag + '>', data.snippet,  textWithSnippets);
 		});
 		$scope.text = text;
-		$scope.compiledText = textWithSnippets;
+		$('.code-compiled').html(textWithSnippets);
 		prettyPrint();
 	}
-
+	
+	/**
+	 * String Replace for Text Compilation
+	 * 
+	 * @param  {[type]} old_string [description]
+	 * @param  {[type]} new_string [description]
+	 * @param  {[type]} string     [description]
+	 * @return {[type]}            [description]
+	 */
+	$scope.stringReplace = function(old_string, new_string, string) {
+	    var count, pos_old_string;
+	    string = $.trim(string);
+	    if (( typeof(old_string) == "object" ) &&(old_string.length)){
+	        count = old_string.length;
+	        for(var pos=0; count > pos; pos++){
+	            pos_old_string = old_string[pos];
+	            while (string.indexOf(pos_old_string) != -1) {
+	                string = string.replace(pos_old_string, new_string);
+	            }
+	        }
+	    }else{
+	        while (string.indexOf(old_string) != -1) {
+	            string = string.replace(old_string, new_string);
+	        }
+	    }
+	    return string;
+	};
 	/**
 	 * Add a snippets in $scope.snippets
 	 */
