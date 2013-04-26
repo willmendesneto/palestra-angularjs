@@ -3,7 +3,6 @@
 /* myApp Module */
 
 angular.module('myApp', ['myApp.directives', 'myApp.services']).
-  //config(['$routeProvider', function($routeProvider) {
   config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
   $locationProvider.hashPrefix('!');

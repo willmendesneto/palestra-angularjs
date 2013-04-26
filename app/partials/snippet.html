@@ -1,22 +1,30 @@
-<h2>Total Snippet(s): {{ getTotalSnippets() }}</h2>
+<h2>Total Snippet(s): {{ snippets.length }}</h2>
+<label for="searchSnippet">Search Snippet: </label>
+<input type="search" name="searchSnippet" id="searchSnippet" data-ng-model="searchSnippet" />
+
+<label for="searchSnippet">Select Snippets List by Programming Language: </label>
+<select name="programmingLanguage" id="programmingLanguage" data-ng-model="selectProgrammingLanguage" data-ng-options="item.name for item in arrayAvailableLanguages" data-ng-change="selectSnippetByLanguage(selectProgrammingLanguage.name);">
+  <option value="">Select Language</option>
+</select>
 
 <ul>
-  <li data-ng-repeat="item in snippets">
-    <input type="checkbox" class="show-snippet-info" data-ng-model="item.done" data-ng-click="editSnippet(item)"; />
+  <li data-ng-repeat="item in snippets | filter:searchSnippet">
+    <input type="checkbox" class="show-snippet-info" data-ng-model="item.done" data-ng-click="editSnippet(item);" />
     <span class="done-{{ item.done }}">{{ item.text }}</span>
+    <button class="btn btn-danger" data-ng-click="removeSnippet($index);" > X </button>
   </li>
 </ul>
 
 <div class="btn-group">
   <a href="#index" class="btn btn-inverse">Start over</a>
-  <a href="#form-snippet" data-toggle="modal" class="btn ">Add a snippet</a>
+  <a href="#form-snippet" data-toggle="modal" class="btn " data-ng-model="showSnippetInformationsForm">Add a snippet</a>
   <a href="javascript:void(0);" class="btn btn-warning pretty-print" data-ng-click="compileTextWithSnippets(text);">Compile</a>
 </div><br/><br/>
-<textarea data-ng-model="text" class="texteditor left" ng-change="compileTextWithSnippets(text)"></textarea>
-<pre class="left prettyprint code-compiled linenums"></pre>
+<textarea data-ng-model="text" class="texteditor left" data-ng-change="compileTextWithSnippets(text)"></textarea>
+<textarea data-ng-model="compiledText" class="left prettyprint code-compiled linenums"></textarea>
+<!-- <pre class="left prettyprint code-compiled linenums" data-ng-model="compiledText"></pre> -->
 
-
-<div class="modal hide" id="form-snippet">
+<div data-show="showSnippetInformationsForm" class="modal {{showSnippetInformationsForm || 'hide'}}" id="form-snippet">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">x</button>
     <h3>Adding a snippet in editor</h3>
@@ -35,7 +43,6 @@
               <textarea value="0" data-ng-model="snippet.snippet" data-ng-model-instant rows="10" cols="20"/></textarea><br/>
 
               <input type="button" class="btn btn-primary" value="Save" data-ng-click="addSnippet();" />
-              <input type="button" class="btn btn-danger" value="Remove" data-ng-click="clearCompleted();" />
             </form>
           </div>
         </div>

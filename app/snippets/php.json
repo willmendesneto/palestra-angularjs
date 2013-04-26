@@ -1,0 +1,14 @@
+{
+    {
+        "text" : "Depurator",
+        "done" : false,
+        "tag": "depurator",
+        "snippet": "<code>\nvar_dump($item);\n</code>"
+    },
+    {
+        "text" : "Init Document",
+        "done" : false,
+        "tag": "<?php",
+        "snippet": "<?php\n\n/**\n *\n * This is the template example\n *\n */\n\n\n?>"
+    }
+}

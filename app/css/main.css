@@ -1,5 +1,5 @@
 body{
-	width: 95%;
+	/*width: 95%;*/
 	margin: auto;
 	color: #333;
 }
@@ -27,15 +27,6 @@ pre.code-compiled{
 }
 .left{
 	float: left;
-}
-.container{
-	margin-top: 1em;
-	position: relative;
-}
-.nav{
-	position: absolute;
-	right: 0;
-	top: 0;
 }
 .modal-body{
 	max-height: 500px;
