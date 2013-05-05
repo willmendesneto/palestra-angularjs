@@ -1,4 +1,4 @@
-{
+[
     {
         "text" : "Depurator",
         "done" : false,
@@ -8,7 +8,7 @@
     {
         "text" : "Init Document",
         "done" : false,
-        "tag": "<?php",
-        "snippet": "<?php\n\n/**\n *\n * This is the template example\n *\n */\n\n\n?>"
+        "tag": "php",
+        "snippet": "<?php\n\n/**\n *\n * This is the template example\n *\n */\n\n\n?>\n"
     }
-}
+]

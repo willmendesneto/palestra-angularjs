@@ -1,14 +1,3 @@
-{
-    {
-        "text" : "Lorem Ipsum",
-        "done" : false,
-        "tag": "lorem",
-        "snippet": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-    },
-    {
-        "text" : "Galeria (slideshow)",
-        "done" : false,
-        "tag": "gallery",
-        "snippet": "<ul id=\"sliderInformativo\" >\n\t<li>\n\t\t<a href=\"acessoainformacao\" rel=\"external\" target=\"_blank\">\n\t\t\t<img src=\"http://www.camara.abaira.ba.io.org.br/arquivos_clientes/2/banner/147.jpg\" width=\"582\" height="215" alt=\"Novo Site\" longdesc=\"Novo Site\">\n\t\t</a>\n\t</li>\n</ul>"
-    }
-}
+[
+    { "text" : "Lorem Ipsum", "done" : false, "tag": "lorem", "snippet": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim,quis nostrud exercitation ullamco laboris ex ea commodo est laborum.</p>" }
+]

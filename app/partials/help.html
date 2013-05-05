@@ -1,9 +1,0 @@
-<h2>Busca no Twitter</h2>
-<input type="text" data-ng-model="searchTerm" />
-<input type="button" class="btn-large" data-ng-click="doSearch()" value="Buscar no Twitter" />
-
-<table class="table table-striped">
-  <tr data-ng-repeat="tweet in twitterResult.results">
-    <td>{{ tweet.text }}</td>
-  </tr>
-</table>

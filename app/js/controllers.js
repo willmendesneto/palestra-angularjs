@@ -1,7 +1,23 @@
 'use strict';
 
+//	Controller 	CLIMATEMPO
+var ClimaTempoCtrl = function ($scope, ClimaTempoService){
+
+	$scope.searchCep = '43.700-000';
+
+	$scope.twitterResult;
+
+	$scope.searchCityInformationByCep = function(){
+		$scope.twitter = ClimaTempoService.get({cep: $scope.searchCep}, function(data){
+			$scope.twitterResult = data.data;
+		});
+	}
+
+	$scope.searchCityInformationByCep();
+};
+
 //	Controller Snippet
-var SnippetCtrl = function ($scope, $routeParams, SnippetService){
+var SnippetCtrl = function ($scope, $routeParams, $http){
 
 	/**
 	 * Variable for snippets editor
@@ -45,7 +61,6 @@ var SnippetCtrl = function ($scope, $routeParams, SnippetService){
 	$scope.prettifyCodeSnippet = function(){
         $('.code-compiled').val($scope.text);
         prettyPrint();
-        alert($('.code-compiled').val());
 	};
 
 	/**
@@ -61,12 +76,9 @@ var SnippetCtrl = function ($scope, $routeParams, SnippetService){
 	 * @return {bool} Boolean value of return
 	 */
 	$scope.selectSnippetByLanguage = function( item ){
-		
-		alert('item: '+item);
-		$scope.snippets = SnippetService.get({snippet: item}, function(phone) {
-			console.log(phone);
-			alert(phone);
-		});
+		$http.get('app/snippets/'+ item + '.json').then(function(response) {
+            $scope.snippets = response.data;
+  		});
 
 	};
 
@@ -83,10 +95,10 @@ var SnippetCtrl = function ($scope, $routeParams, SnippetService){
 		$('.code-compiled').html(textWithSnippets);
 		prettyPrint();
 	}
-	
+
 	/**
 	 * String Replace for Text Compilation
-	 * 
+	 *
 	 * @param  {[type]} old_string [description]
 	 * @param  {[type]} new_string [description]
 	 * @param  {[type]} string     [description]
@@ -129,27 +141,6 @@ var SnippetCtrl = function ($scope, $routeParams, SnippetService){
 
 };
 
-SnippetCtrl.$inject = ['$rootScope', '$scope'];
-
-//	Controller 	TWITTER
-var TwitterCtrl = function ($scope, TwitterService){
-
-	/**
-	 * Initial value for search in twitter
-	 * @type {String}
-	 */
-	$scope.searchTerm = '@bahiajs';
-
-	/**
-	 * Search information search term based
-	 * @return {array} array json with the informations result
-	 */
-	$scope.doSearch = function(){
-		$scope.twitterResult = TwitterService.get({ q : $scope.searchTerm });
-	}
-
-	$scope.doSearch();
-};
 
 var BeerCounter = function($scope, $locale) {
 	$scope.beers = [0, 1, 2, 3, 4, 5, 6];

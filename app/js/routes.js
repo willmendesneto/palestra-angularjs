@@ -8,10 +8,11 @@ angular.module('myApp', ['myApp.directives', 'myApp.services']).
   $locationProvider.hashPrefix('!');
 
   $routeProvider.
-      when('/index', {templateUrl: '/angular-palestra/app/partials/snippet.html',   controller: 'SnippetCtrl'}).
-      when('/resource', {templateUrl: '/angular-palestra/app/partials/help.html',   controller: 'TwitterCtrl'}).
-      when('/directive-component', {templateUrl: '/angular-palestra/app/partials/directives.html',   controller: 'BeerCounter'}).
-      when('/directives', {templateUrl: '/angular-palestra/app/partials/about.html'}).
+      when('/index', {templateUrl: '/palestra-angular/app/partials/snippet.html',   controller: 'SnippetCtrl'}).
+      when('/directive-component', {templateUrl: '/palestra-angular/app/partials/directives.html',   controller: 'BeerCounter'}).
+      when('/directives', {templateUrl: '/palestra-angular/app/partials/about.html'}).
+      when('/resource', {templateUrl: '/palestra-angular/app/partials/climatempo.html',   controller: 'ClimaTempoCtrl'}).
+
       otherwise({redirectTo: '/index'});
 }]);
 
